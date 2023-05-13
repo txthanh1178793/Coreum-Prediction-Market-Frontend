@@ -127,7 +127,7 @@ const CurrentBet = (props: Props) => {
     }
     return (
         <div className="flex flex-wrap items-center justify-around max-w-4xl mt-6 max-w-full sm:w-full">
-            <div className=" --container-wrapper p-6" >
+            <div className=" --container-wrapper p-6 mt-6 text-left border" >
                 <div className="--container-inner">
                     <p className="order">
                         #{info.id} {parseInt(info.endTime) == 0 ? "Pending" : (parseInt(info.endTime) < parseInt(info.timeStamp) ? "Watting for Result" : ("Betting End in " + (parseInt(info.endTime) - parseInt(info.timeStamp)).toString() + ' s'))}
@@ -172,7 +172,7 @@ const CurrentBet = (props: Props) => {
 
             <div className="--margin"></div>
 
-            <div className="--container-wrapper -bet--info">
+            <div className="--container-wrapper -bet--info p-6 mt-6 text-left border">
                 <div className="--step">
                     <div className="--bet-info-id">#{betID}</div>
                     <a className="previous round">
