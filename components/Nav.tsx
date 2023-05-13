@@ -22,7 +22,7 @@ function Nav() {
         <div className="flex items-center">
           <Link href="/">
             <a>
-              <Image src="/DOM_Predict.svg" height={60} width={200} alt="Logo" />
+              <Image src="/DOM_Predict.svg" height={100} width={250} alt="Logo" />
             </a>
           </Link>
           {/* <Link href="/">
