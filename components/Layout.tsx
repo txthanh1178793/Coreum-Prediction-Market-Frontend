@@ -22,21 +22,21 @@ export default function Layout({ children }: { children: ReactNode }) {
         >
           {process.env.NEXT_PUBLIC_CHAIN_NAME} Explorer
         </a>
-        <a className="pl-1 link link-primary link-hover">|</a>
+        <a className="pl-1 link link-primary link-hover" onClick={() => { setDisabled(true); }}>|</a>
         <a
           className="pl-1 link link-primary link-hover"
           href="https://docs.coreum.dev/"
         >
           Coreum Docs
         </a>
-        <span className="pl-1"> | </span>
+        <a className="pl-1 link link-primary link-hover" onClick={() => { setDisabled(true); }}>|</a>
         <a
           className="pl-1 link link-primary link-hover"
           href="https://github.com/cosmos/cosmjs"
         >
           CosmJS Docs
         </a>
-        <span className="pl-1"> | </span>
+        <a className="pl-1 link link-primary link-hover" onClick={() => { setDisabled(true); }}>|</a>
         <a
           className="pl-1 link link-primary link-hover"
           href="https://keplr.app/"
