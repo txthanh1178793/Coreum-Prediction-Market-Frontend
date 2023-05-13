@@ -127,7 +127,7 @@ const CurrentBet = (props: Props) => {
     }
     return (
         <div>
-            <div className="--container-wrapper" >
+            <div className="flex w-full max-w-xl --container-wrapper" >
                 <div className="--container-inner">
                     <p className="order">
                         #{info.id} {parseInt(info.endTime) == 0 ? "Pending" : (parseInt(info.endTime) < parseInt(info.timeStamp) ? "Watting for Result" : ("Betting End in " + (parseInt(info.endTime) - parseInt(info.timeStamp)).toString() + ' s'))}
