@@ -126,7 +126,7 @@ const CurrentBet = (props: Props) => {
         return <button className="--check-and-claim" onClick={handleClaimReward}>Claim Reward</button>
     }
     return (
-        <div className="flex w-full max-w-xl">
+        <div >
             <div className="flex flex-wrap items-center justify-around max-w-4xl mt-6 max-w-full sm:w-full --container-wrapper " >
                 <div className="--container-inner">
                     <p className="order">
