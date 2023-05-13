@@ -1,6 +1,6 @@
 // import { PREDICT_CONTRACT_ADDRESS } from "@/services/constants";
-import { chainGrpcWasmApi, msgBroadcastClient } from "@/services/services";
-import { getAddresses } from "@/services/wallet";
+// import { chainGrpcWasmApi, msgBroadcastClient } from "@/services/services";
+// import { getAddresses } from "@/services/wallet";
 import React, { createContext, useContext, useEffect, useState } from "react";
 
 import { useSigningClient } from 'contexts/client'
