@@ -24,24 +24,6 @@ const Home: NextPage = () => {
       </div>
 
       <div className="flex flex-wrap items-center justify-around max-w-4xl mt-6 max-w-full sm:w-full">
-        <Link href="https://docs.coreum.dev/tools-ecosystem/faucet.html" passHref>
-          <a target="_blank" rel="noreferrer"
-            className="p-6 mt-6 text-left border border-secondary hover:border-primary w-96 rounded-xl hover:text-primary focus:text-primary-focus">
-            <h3 className="text-2xl font-bold">Fund wallet &rarr;</h3>
-            <p className="mt-4 text-xl">
-              Fund you wallet for the {process.env.NEXT_PUBLIC_CHAIN_NAME}.
-            </p>
-          </a>
-        </Link>
-        <Link href="/send" passHref>
-          <a
-            className="p-6 mt-6 text-left border border-secondary hover:border-primary w-96 rounded-xl hover:text-primary focus:text-primary-focus">
-            <h3 className="text-2xl font-bold">Send to wallet &rarr;</h3>
-            <p className="mt-4 text-xl">
-              Execute a transaction to send funds to a wallet address.
-            </p>
-          </a>
-        </Link>
         <Link href="/nft" passHref>
           <a
             className="p-6 mt-6 text-left border border-secondary hover:border-primary w-96 rounded-xl hover:text-primary focus:text-primary-focus">
