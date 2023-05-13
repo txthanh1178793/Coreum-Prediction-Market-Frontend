@@ -22,7 +22,7 @@ export default function Layout({ children }: { children: ReactNode }) {
         >
           {process.env.NEXT_PUBLIC_CHAIN_NAME} Explorer
         </a>
-        <span className="pl-1 link-primary link-hover" > | </span>
+        <a className="pl-1 link link-primary link-hover">|</a>
         <a
           className="pl-1 link link-primary link-hover"
           href="https://docs.coreum.dev/"
