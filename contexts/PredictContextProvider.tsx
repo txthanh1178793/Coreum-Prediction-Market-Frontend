@@ -212,14 +212,14 @@ const PredictContextProvider = (props: Props) => {
         }
 
         try {
-            const msg = MsgExecuteContractCompat.fromJSON({
-                funds: amount,
-                contractAddress: PREDICT_CONTRACT_ADDRESS,
-                sender: walletAddress,
-                msg: {
-                    up_bet: {},
-                },
-            });
+            // const msg = MsgExecuteContractCompat.fromJSON({
+            //     funds: amount,
+            //     contractAddress: PREDICT_CONTRACT_ADDRESS,
+            //     sender: walletAddress,
+            //     msg: {
+            //         up_bet: {},
+            //     },
+            // });
 
             // await msgBroadcastClient.broadcast({
             //     msgs: msg,
@@ -241,14 +241,14 @@ const PredictContextProvider = (props: Props) => {
         }
 
         try {
-            const msg = MsgExecuteContractCompat.fromJSON({
-                funds: amount,
-                contractAddress: PREDICT_CONTRACT_ADDRESS,
-                sender: walletAddress,
-                msg: {
-                    down_bet: {},
-                },
-            });
+            // const msg = MsgExecuteContractCompat.fromJSON({
+            //     funds: amount,
+            //     contractAddress: PREDICT_CONTRACT_ADDRESS,
+            //     sender: walletAddress,
+            //     msg: {
+            //         down_bet: {},
+            //     },
+            // });
 
             // await msgBroadcastClient.broadcast({
             //     msgs: msg,
@@ -266,13 +266,13 @@ const PredictContextProvider = (props: Props) => {
             return;
         }
         try {
-            const msg = MsgExecuteContractCompat.fromJSON({
-                contractAddress: PREDICT_CONTRACT_ADDRESS,
-                sender: walletAddress,
-                msg: {
-                    claim_reward: { bet_id: parseInt(value, 10) },
-                },
-            });
+            // const msg = MsgExecuteContractCompat.fromJSON({
+            //     contractAddress: PREDICT_CONTRACT_ADDRESS,
+            //     sender: walletAddress,
+            //     msg: {
+            //         claim_reward: { bet_id: parseInt(value, 10) },
+            //     },
+            // });
 
             // await msgBroadcastClient.broadcast({
             //     msgs: msg,
