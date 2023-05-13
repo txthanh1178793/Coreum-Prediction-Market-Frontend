@@ -126,7 +126,7 @@ const CurrentBet = (props: Props) => {
         return <button className="--check-and-claim" onClick={handleClaimReward}>Claim Reward</button>
     }
     return (
-        <div className="flex w-full max-w-xl">
+        <div >
             <div className=" --container-wrapper " >
                 <div className="--container-inner">
                     <p className="order">
@@ -172,7 +172,7 @@ const CurrentBet = (props: Props) => {
 
             <div className="--margin"></div>
 
-            <div className="--container-wrapper -bet--info">
+            <div className="--container-wrapper">
                 <div className="--step">
                     <div className="--bet-info-id">#{betID}</div>
                     <a className="previous round">
