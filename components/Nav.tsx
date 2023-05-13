@@ -26,7 +26,7 @@ function Nav() {
               <Image
                 src="/DOM_Predict.svg"
                 // height={32}
-                // width={32}
+                width={200}
                 alt="Logo"
               />
             </a>
