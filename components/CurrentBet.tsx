@@ -75,12 +75,12 @@ const CurrentBet = (props: Props) => {
 
 
 
-    function handleStartBet() {
-        startBet();
-    }
-    function handleEndBet() {
-        endBet();
-    }
+    // function handleStartBet() {
+    //     startBet();
+    // }
+    // function handleEndBet() {
+    //     endBet();
+    // }
     function handleUpBet() {
         upBet(inputValue);
         setInputValue("0");
