@@ -172,7 +172,7 @@ const CurrentBet = (props: Props) => {
 
             <div className="--margin"></div>
 
-            <div className="--container-wrapper -bet--info p-16 mt-16 border">
+            <div className="--container-wrapper  p-16 mt-16 border -bet--info">
                 <div className="--step">
                     <div className="--bet-info-id">#{betID}</div>
                     <a className="previous round">
