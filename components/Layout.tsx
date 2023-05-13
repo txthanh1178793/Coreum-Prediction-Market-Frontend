@@ -29,7 +29,7 @@ export default function Layout({ children }: { children: ReactNode }) {
         >
           Coreum Docs
         </a>
-        <a className="pl-1 link link-primary link-hover">|</a>
+        <div className="pl-1 link link-primary link-hover">|</div>
         <a
           className="pl-1 link link-primary link-hover"
           href="https://github.com/cosmos/cosmjs"
