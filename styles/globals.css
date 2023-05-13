@@ -377,4 +377,5 @@ a:hover {
 
 .--pointer-disable {
     pointer-events: none;
+    color: white;
 }
