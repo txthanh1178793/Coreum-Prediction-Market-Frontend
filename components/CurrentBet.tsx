@@ -126,8 +126,8 @@ const CurrentBet = (props: Props) => {
         return <button className="--check-and-claim" onClick={handleClaimReward}>Claim Reward</button>
     }
     return (
-        <div >
-            <div className="flex flex-wrap items-center justify-around max-w-4xl mt-6 max-w-full sm:w-full --container-wrapper " >
+        <div className="flex w-full max-w-xl">
+            <div className=" --container-wrapper " >
                 <div className="--container-inner">
                     <p className="order">
                         #{info.id} {parseInt(info.endTime) == 0 ? "Pending" : (parseInt(info.endTime) < parseInt(info.timeStamp) ? "Watting for Result" : ("Betting End in " + (parseInt(info.endTime) - parseInt(info.timeStamp)).toString() + ' s'))}
@@ -172,7 +172,7 @@ const CurrentBet = (props: Props) => {
 
             <div className="--margin"></div>
 
-            <div className="flex flex-wrap items-center justify-around max-w-4xl mt-6 max-w-full sm:w-full --container-wrapper -bet--info">
+            <div className="--container-wrapper -bet--info">
                 <div className="--step">
                     <div className="--bet-info-id">#{betID}</div>
                     <a className="previous round">
