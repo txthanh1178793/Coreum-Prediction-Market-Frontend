@@ -37,6 +37,7 @@ const Home: NextPage = () => {
 
 
     // </WalletLoader>
+    <div></div>
   )
 }
 
