@@ -20,9 +20,9 @@ export default function Layout({ children }: { children: ReactNode }) {
           target="_blank" rel="noreferrer" href={process.env.NEXT_PUBLIC_CHAIN_EXPLORER || ""}
           className="pl-1 link link-primary link-hover"
         >
-          {process.env.NEXT_PUBLIC_CHAIN_NAME} Explorer |
+          {process.env.NEXT_PUBLIC_CHAIN_NAME} Explorer
         </a>
-        {/* <span className="pl-1"> | </span> */}
+        <span className="pl-1 link-primary link-hover" > | </span>
         <a
           className="pl-1 link link-primary link-hover"
           href="https://docs.coreum.dev/"
