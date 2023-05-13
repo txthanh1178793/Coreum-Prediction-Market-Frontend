@@ -210,9 +210,9 @@ const CurrentBet = (props: Props) => {
                         </tr>
                     </table>
                 </div>
-                <div className="--margin">
+                {/* <div className="--margin"> */}
 
-                </div>
+                {/* </div> */}
                 <div className=".--bet-info-button">
                     {/* <button className="--check-and-claim" onClick={handleQueryReward}>CHECK</button> */}
                     <div>
