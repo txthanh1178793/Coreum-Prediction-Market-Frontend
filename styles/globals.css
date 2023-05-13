@@ -374,3 +374,7 @@ a:hover {
 .--margin {
     height: 30px;
 }
+
+.--pointer-disable {
+    pointer-events: none;
+}
