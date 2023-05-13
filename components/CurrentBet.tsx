@@ -1,6 +1,5 @@
 import { usePredictStore } from "contexts/PredictContextProvider";
 import React, { useEffect, useState } from "react";
-import { useQuery } from 'react-query'
 // import { PREDICT_CONTRACT_ADDRESS } from "@/services/constants";
 
 

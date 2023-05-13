@@ -14,7 +14,6 @@ function Nav() {
     }
   }
 
-  const PUBLIC_SITE_ICON_URL = process.env.NEXT_PUBLIC_SITE_ICON_URL || ''
 
   return (
     <div className="border-b w-screen px-2 md:px-16">
@@ -23,12 +22,7 @@ function Nav() {
         <div className="flex items-center">
           <Link href="/">
             <a>
-              <Image
-                src="/DOM_Predict.svg"
-                height={60}
-                width={200}
-                alt="Logo"
-              />
+              <Image src="/DOM_Predict.svg" height={60} width={200} alt="Logo" />
             </a>
           </Link>
           {/* <Link href="/">
