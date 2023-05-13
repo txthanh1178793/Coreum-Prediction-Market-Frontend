@@ -1,10 +1,10 @@
-import {useSigningClient} from 'contexts/client'
+import { useSigningClient } from 'contexts/client'
 import Link from 'next/link'
 import Image from 'next/image'
 import Router from 'next/router'
 
 function Nav() {
-  const {walletAddress, connectWallet, disconnect} = useSigningClient()
+  const { walletAddress, connectWallet, disconnect } = useSigningClient()
   const handleConnect = () => {
     if (walletAddress.length === 0) {
       connectWallet()
@@ -23,23 +23,19 @@ function Nav() {
         <div className="flex items-center">
           <Link href="/">
             <a>
-              {PUBLIC_SITE_ICON_URL.length > 0 ? (
-                <Image
-                  src={PUBLIC_SITE_ICON_URL}
-                  height={32}
-                  width={32}
-                  alt="Logo"
-                />
-              ) : (
-                <span className="text-2xl">⚛️ </span>
-              )}
+              <Image
+                src="/DOM_Predict.svg"
+                height={32}
+                width={32}
+                alt="Logo"
+              />
             </a>
           </Link>
-          <Link href="/">
+          {/* <Link href="/">
             <a className="ml-1 md:ml-2 link link-hover font-semibold text-xl md:text-2xl align-top">
               {process.env.NEXT_PUBLIC_SITE_TITLE}
             </a>
-          </Link>
+          </Link> */}
         </div>
         <div className="flex flex-grow lg:flex-grow-0 max-w-full">
           <button
