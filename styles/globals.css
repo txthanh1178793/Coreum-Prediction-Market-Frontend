@@ -151,7 +151,7 @@ body {
 .--container-wrapper {
     background: rgb(156, 181, 181);
     border-radius: 25px;
-    width: 100%;
+    width: 50%;
     height: 340px;
     position: relative;
     margin: 0 auto;
@@ -297,7 +297,7 @@ td {
 
 .-bet--info {
     /* margin-left: 20px; */
-    width: 60%;
+    width: 30%;
 }
 
 a {
