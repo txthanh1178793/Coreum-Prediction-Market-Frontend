@@ -150,7 +150,7 @@ body {
 /******************************************* Current Bet ************************************/
 .container {
     display: grid;
-    grid-gap: 5px;
+    grid-gap: 1px;
     grid-template-columns: repeat(auto-fit, minmax(312px, 610px));
     /* grid-template-rows: repeat(2, 100px); */
 }
