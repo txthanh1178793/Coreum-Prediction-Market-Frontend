@@ -389,3 +389,7 @@ a:hover {
     pointer-events: none;
     color: white;
 }
+
+.head {
+    height: 100px;
+}
