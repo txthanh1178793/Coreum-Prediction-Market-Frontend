@@ -18,7 +18,7 @@ function Nav() {
   return (
     <div className="border-b w-screen px-2 md:px-16">
       <nav
-        className="flex flex-wrap text-center md:text-left md:flex flex-row w-full justify-between items-center py-4 ">
+        className="flex flex-wrap text-center md:text-left md:flex flex-row w-full justify-between items-center py-4 " height={100}>
         <div className="flex items-center">
           <Link href="/">
             <a>
