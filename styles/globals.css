@@ -155,8 +155,8 @@ body {
     height: 340px;
     position: relative;
     margin: 0 auto;
-    flex: 1;
-    flex-wrap: wrap;
+    /* flex: 1; */
+    /* flex-wrap: wrap; */
 }
 
 .--container-inner {
