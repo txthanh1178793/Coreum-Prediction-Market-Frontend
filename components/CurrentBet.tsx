@@ -170,7 +170,7 @@ const CurrentBet = (props: Props) => {
                 </div>
             </div >
 
-            <div className="--margin"></div>
+            {/* <div className="--margin"></div> */}
 
             <div className="--container-wrapper p-3 mt-3 border -bet--info">
                 <div className="--step">
