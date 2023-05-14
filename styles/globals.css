@@ -156,7 +156,7 @@ body {
     position: relative;
     margin: 0 auto;
     /* flex: 1; */
-    /* flex-wrap: wrap; */
+    flex-wrap: wrap;
 }
 
 .--container-inner {
