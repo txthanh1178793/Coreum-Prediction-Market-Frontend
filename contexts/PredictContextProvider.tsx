@@ -217,7 +217,7 @@ const PredictContextProvider = (props: Props) => {
             value: {},
         }], amount).then((passed) => {
             if (passed) {
-                queryNFTs()
+                // queryNFTs()
             }
         })
 
