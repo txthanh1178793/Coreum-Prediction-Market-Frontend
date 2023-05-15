@@ -214,8 +214,7 @@ const PredictContextProvider = (props: Props) => {
         }
 
         try {
-
-            await signingClient.execute({
+            await signingClient?.execute({
                 walletAddress,
                 contractAddress,
                 { up_bet: {} },
