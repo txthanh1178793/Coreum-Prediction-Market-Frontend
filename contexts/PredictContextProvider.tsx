@@ -106,6 +106,7 @@ const PredictContextProvider = (props: Props) => {
     // const [addr, setAddr] = useState("inj1jx9uecvwlf94skkwrfumhv0sjsm85um9mmg9ny");
     const [reward, setReward] = useState("0");
     const { walletAddress, signingClient, coreumQueryClient } = useSigningClient()
+    console.log("xxxxxxxxxxxxxxxxxxx")
     console.log(walletAddress)
 
     // const { walletAddress } = useSigningClient()
@@ -130,7 +131,7 @@ const PredictContextProvider = (props: Props) => {
     async function fetchCurrentInfo() {
         let binancePrice = await fetchFromBinance();
         let timeStamp = await queryTimeStamp();
-        let addr = "inj1jx9uecvwlf94skkwrfumhv0sjsm85um9mmg9ny";
+        let addr = "devcore1tzt07pu6a0dn80rr5s40dyk9j8vpeztnth4ysg";
         // if (walletAddress) addr = walletAddress;
         try {
             // const response = await chainGrpcWasmApi.fetchSmartContractState(
