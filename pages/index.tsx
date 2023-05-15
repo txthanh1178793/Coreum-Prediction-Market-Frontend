@@ -6,7 +6,6 @@ import { useSigningClient } from 'contexts/client'
 
 const Home: NextPage = () => {
   const { walletAddress } = useSigningClient()
-  console.log(walletAddress);
 
   return (
     // <WalletLoader>
