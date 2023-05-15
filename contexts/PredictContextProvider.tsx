@@ -213,31 +213,31 @@ const PredictContextProvider = (props: Props) => {
             amount: BigInt((parseFloat(value) * 1000000)).toString()
         }
         sendTx([{
-            'up_bet',
-            {},
+            typeUrl: 'up_bet',
+            value: {},
         }], amount).then((passed) => {
-                if (passed) {
-                    queryNFTs()
-                }
-            })
+            if (passed) {
+                queryNFTs()
+            }
+        })
 
-    // const msg = MsgExecuteContractCompat.fromJSON({
-    //     funds: amount,
-    //     contractAddress: PREDICT_CONTRACT_ADDRESS,
-    //     sender: walletAddress,
-    //     msg: {
-    //         up_bet: {},
-    //     },
-    // });
+        // const msg = MsgExecuteContractCompat.fromJSON({
+        //     funds: amount,
+        //     contractAddress: PREDICT_CONTRACT_ADDRESS,
+        //     sender: walletAddress,
+        //     msg: {
+        //         up_bet: {},
+        //     },
+        // });
 
-    // await msgBroadcastClient.broadcast({
-    //     msgs: msg,
-    //     walletAddress: walletAddress,
-    // });
-    fetchCurrentInfo();
-} catch (e) {
-    alert((e as any).message);
-}
+        // await msgBroadcastClient.broadcast({
+        //     msgs: msg,
+        //     walletAddress: walletAddress,
+        // });
+        fetchCurrentInfo();
+    } catch (e) {
+        alert((e as any).message);
+    }
 }
 async function downBet(value: string) {
     if (!walletAddress) {
