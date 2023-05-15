@@ -3,6 +3,9 @@
 // import { getAddresses } from "@/services/wallet";
 import React, { createContext, useContext, useEffect, useState } from "react";
 import { useSigningClient } from 'contexts/client'
+import { EncodeObject } from "@cosmjs/proto-signing";
+
+const contractAddress = "devcore1nc5tatafv6eyq7llkr2gv50ff9e22mnf70qgjlv737ktmt4eswrqpqvdls"
 
 type StoreState = {
     data: {
@@ -207,99 +210,123 @@ const PredictContextProvider = (props: Props) => {
         }
         const amount = {
             denom: 'udevcore',
-            amount: BigInt((parseFloat(value) * 1000000000000000000)).toString()
+            amount: BigInt((parseFloat(value) * 1000000)).toString()
         }
 
         try {
-            // const msg = MsgExecuteContractCompat.fromJSON({
-            //     funds: amount,
-            //     contractAddress: PREDICT_CONTRACT_ADDRESS,
-            //     sender: walletAddress,
-            //     msg: {
-            //         up_bet: {},
-            //     },
-            // });
 
-            // await msgBroadcastClient.broadcast({
-            //     msgs: msg,
-            //     walletAddress: walletAddress,
-            // });
-            fetchCurrentInfo();
-        } catch (e) {
-            alert((e as any).message);
-        }
+            await signingClient.execute({
+                walletAddress,
+                contractAddress,
+                { up_bet: {} },
+                amount
+            });
+
+        // const msg = MsgExecuteContractCompat.fromJSON({
+        //     funds: amount,
+        //     contractAddress: PREDICT_CONTRACT_ADDRESS,
+        //     sender: walletAddress,
+        //     msg: {
+        //         up_bet: {},
+        //     },
+        // });
+
+        // await msgBroadcastClient.broadcast({
+        //     msgs: msg,
+        //     walletAddress: walletAddress,
+        // });
+        fetchCurrentInfo();
+    } catch (e) {
+        alert((e as any).message);
     }
-    async function downBet(value: string) {
-        if (!walletAddress) {
-            alert("No Wallet Connected");
-            return;
-        }
-        const amount = {
-            denom: 'udevcore',
-            amount: BigInt((parseFloat(value) * 1000000000000000000)).toString()
-        }
-
-        try {
-            // const msg = MsgExecuteContractCompat.fromJSON({
-            //     funds: amount,
-            //     contractAddress: PREDICT_CONTRACT_ADDRESS,
-            //     sender: walletAddress,
-            //     msg: {
-            //         down_bet: {},
-            //     },
-            // });
-
-            // await msgBroadcastClient.broadcast({
-            //     msgs: msg,
-            //     walletAddress: walletAddress,
-            // });
-            fetchCurrentInfo();
-        } catch (e) {
-            alert((e as any).message);
-        }
+}
+async function downBet(value: string) {
+    if (!walletAddress) {
+        alert("No Wallet Connected");
+        return;
+    }
+    const amount = {
+        denom: 'udevcore',
+        amount: BigInt((parseFloat(value) * 1000000000000000000)).toString()
     }
 
-    async function claimReward(value: string) {
-        if (!walletAddress) {
-            alert("No Wallet Connected");
-            return;
-        }
-        try {
-            // const msg = MsgExecuteContractCompat.fromJSON({
-            //     contractAddress: PREDICT_CONTRACT_ADDRESS,
-            //     sender: walletAddress,
-            //     msg: {
-            //         claim_reward: { bet_id: parseInt(value, 10) },
-            //     },
-            // });
+    try {
+        // const msg = MsgExecuteContractCompat.fromJSON({
+        //     funds: amount,
+        //     contractAddress: PREDICT_CONTRACT_ADDRESS,
+        //     sender: walletAddress,
+        //     msg: {
+        //         down_bet: {},
+        //     },
+        // });
 
-            // await msgBroadcastClient.broadcast({
-            //     msgs: msg,
-            //     walletAddress: walletAddress,
-            // });
-            fetchCurrentInfo();
-        } catch (e) {
-            alert((e as any).message);
-        }
+        // await msgBroadcastClient.broadcast({
+        //     msgs: msg,
+        //     walletAddress: walletAddress,
+        // });
+        fetchCurrentInfo();
+    } catch (e) {
+        alert((e as any).message);
     }
+}
 
-    return (
-        <PredictContext.Provider
-            value={{
-                data: info,
-                betInfo: betInfoState,
-                reward: reward,
-                queryBetInfo,
-                queryReward,
-                upBet,
-                downBet,
-                claimReward,
-                fetchCurrentInfo,
-                // getid,
-            }}
-        >
-            {props.children}
-        </PredictContext.Provider>
-    );
+async function claimReward(value: string) {
+    if (!walletAddress) {
+        alert("No Wallet Connected");
+        return;
+    }
+    try {
+        // const msg = MsgExecuteContractCompat.fromJSON({
+        //     contractAddress: PREDICT_CONTRACT_ADDRESS,
+        //     sender: walletAddress,
+        //     msg: {
+        //         claim_reward: { bet_id: parseInt(value, 10) },
+        //     },
+        // });
+
+        // await msgBroadcastClient.broadcast({
+        //     msgs: msg,
+        //     walletAddress: walletAddress,
+        // });
+        fetchCurrentInfo();
+    } catch (e) {
+        alert((e as any).message);
+    }
+}
+
+const sendTx = async (msgs: readonly EncodeObject[]) => {
+    try {
+        const resp = await signingClient
+            ?.signAndBroadcast(walletAddress, msgs, 'auto')
+        console.log(`Tx hash: ${resp?.transactionHash}`)
+        //   setLoading(false)
+        return true
+    } catch (error: any) {
+        console.error(error)
+        //   setLoading(false)
+        alert(`Error! ${error}`)
+        return false
+    }
+}
+
+
+return (
+    <PredictContext.Provider
+        value={{
+            data: info,
+            betInfo: betInfoState,
+            reward: reward,
+            queryBetInfo,
+            queryReward,
+            upBet,
+            downBet,
+            claimReward,
+            fetchCurrentInfo,
+            // getid,
+        }}
+    >
+        {props.children}
+    </PredictContext.Provider>
+);
 };
 export default PredictContextProvider;
