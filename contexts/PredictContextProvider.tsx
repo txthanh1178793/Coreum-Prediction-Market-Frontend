@@ -103,14 +103,22 @@ const PredictContextProvider = (props: Props) => {
         startPrice: "0",
         totalPrize: "0",
     });
+    const [address, setAddress] = useState("0000");
     // const [addr, setAddr] = useState("inj1jx9uecvwlf94skkwrfumhv0sjsm85um9mmg9ny");
     const [reward, setReward] = useState("0");
     const { walletAddress, signingClient, coreumQueryClient } = useSigningClient()
+    console.log(walletAddress)
 
     useEffect(() => {
         const interval = setInterval(() => fetchCurrentInfo(), 5000);
         return () => clearInterval(interval);
     }, [walletAddress]);
+
+    useEffect(() => {
+        let { walletAddress, signingClient, coreumQueryClient } = useSigningClient()
+        setAddress(walletAddress);
+    }, [walletAddress]);
+
 
     const fetchFromBinance = async () => {
         try {
@@ -230,7 +238,7 @@ const PredictContextProvider = (props: Props) => {
         }
         const amount = {
             denom: 'udevcore',
-            amount: BigInt((parseFloat(value) * 1000000000000000000)).toString()
+            amount: BigInt((parseFloat(value) * 1000000)).toString()
         }
 
         try {
