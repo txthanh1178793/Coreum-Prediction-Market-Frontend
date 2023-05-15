@@ -213,31 +213,33 @@ const PredictContextProvider = (props: Props) => {
             amount: BigInt((parseFloat(value) * 1000000)).toString()
         }
 
-        try {
-            await signingClient?.execute({
-                walletAddress,
-                contractAddress,
-                { up_bet: {} },
-                amount
-            });
+        setLoading(true)
+        sendTx([{
+            'up_bet',
+            {},
+        }], amount).then((passed) => {
+                if (passed) {
+                    queryNFTs()
+                }
+            })
 
-        // const msg = MsgExecuteContractCompat.fromJSON({
-        //     funds: amount,
-        //     contractAddress: PREDICT_CONTRACT_ADDRESS,
-        //     sender: walletAddress,
-        //     msg: {
-        //         up_bet: {},
-        //     },
-        // });
+    // const msg = MsgExecuteContractCompat.fromJSON({
+    //     funds: amount,
+    //     contractAddress: PREDICT_CONTRACT_ADDRESS,
+    //     sender: walletAddress,
+    //     msg: {
+    //         up_bet: {},
+    //     },
+    // });
 
-        // await msgBroadcastClient.broadcast({
-        //     msgs: msg,
-        //     walletAddress: walletAddress,
-        // });
-        fetchCurrentInfo();
-    } catch (e) {
-        alert((e as any).message);
-    }
+    // await msgBroadcastClient.broadcast({
+    //     msgs: msg,
+    //     walletAddress: walletAddress,
+    // });
+    fetchCurrentInfo();
+} catch (e) {
+    alert((e as any).message);
+}
 }
 async function downBet(value: string) {
     if (!walletAddress) {
@@ -293,10 +295,10 @@ async function claimReward(value: string) {
     }
 }
 
-const sendTx = async (msgs: readonly EncodeObject[]) => {
+const sendTx = async (msgs: readonly EncodeObject[], amount: any) => {
     try {
         const resp = await signingClient
-            ?.signAndBroadcast(walletAddress, msgs, 'auto')
+            ?.signAndBroadcast(walletAddress, msgs, amount, 'auto')
         console.log(`Tx hash: ${resp?.transactionHash}`)
         //   setLoading(false)
         return true
