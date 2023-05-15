@@ -106,6 +106,9 @@ const PredictContextProvider = (props: Props) => {
     // const [addr, setAddr] = useState("inj1jx9uecvwlf94skkwrfumhv0sjsm85um9mmg9ny");
     const [reward, setReward] = useState("0");
     const { walletAddress, signingClient, coreumQueryClient } = useSigningClient()
+    console.log(walletAddress)
+
+    // const { walletAddress } = useSigningClient()
 
     useEffect(() => {
         const interval = setInterval(() => fetchCurrentInfo(), 5000);
