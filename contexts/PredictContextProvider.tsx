@@ -212,8 +212,6 @@ const PredictContextProvider = (props: Props) => {
             denom: 'udevcore',
             amount: BigInt((parseFloat(value) * 1000000)).toString()
         }
-
-        setLoading(true)
         sendTx([{
             'up_bet',
             {},
