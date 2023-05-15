@@ -217,7 +217,7 @@ const PredictContextProvider = (props: Props) => {
             value: {},
         }], amount).then((passed) => {
             if (passed) {
-                // queryNFTs()
+                fetchCurrentInfo();
             }
         })
 
@@ -234,7 +234,7 @@ const PredictContextProvider = (props: Props) => {
         //     msgs: msg,
         //     walletAddress: walletAddress,
         // });
-        fetchCurrentInfo();
+
     } catch (e) {
         alert((e as any).message);
     }
