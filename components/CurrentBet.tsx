@@ -1,12 +1,16 @@
 import { usePredictStore } from "contexts/PredictContextProvider";
+import { useSigningClient } from 'contexts/client'
 import React, { useEffect, useState } from "react";
 // import { PREDICT_CONTRACT_ADDRESS } from "@/services/constants";
 
 
 type Props = {};
 const CurrentBet = (props: Props) => {
+    const { walletAddress, signingClient, coreumQueryClient } = useSigningClient()
+    console.log(walletAddress)
+
     const [inputValue, setInputValue] = useState("0");
-    const [inputAddress, setInputAddress] = useState("0");
+    // const [inputAddress, setInputAddress] = useState("0");
     const [inpuId, setInpuId] = useState("0");
     const [betID, setBetID] = useState("0");
     const [rewardState, setReward] = useState("0");
