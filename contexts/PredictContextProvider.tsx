@@ -205,7 +205,7 @@ const PredictContextProvider = (props: Props) => {
         }
     }
     async function upBet(value: string) {
-        console.log(walletAddress);
+        console.log(value);
         if (!walletAddress) {
             alert("No Wallet Connected");
             return;
