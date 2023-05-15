@@ -4,6 +4,7 @@ import WalletLoader from 'components/WalletLoader'
 import CurrentBet from "components/CurrentBet";
 import { useSigningClient } from 'contexts/client'
 
+
 const Home: NextPage = () => {
   const { walletAddress } = useSigningClient()
 
@@ -38,7 +39,7 @@ const Home: NextPage = () => {
 
 
     // </WalletLoader>
-    <CurrentBet></CurrentBet>
+    <WalletLoader> <CurrentBet></ CurrentBet></WalletLoader>
   )
 }
 
