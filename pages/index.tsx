@@ -6,7 +6,7 @@ import { useSigningClient } from 'contexts/client'
 
 
 const Home: NextPage = () => {
-  const { walletAddress } = useSigningClient()
+  // const { walletAddress } = useSigningClient()
 
   return (
     // <WalletLoader>
@@ -39,7 +39,7 @@ const Home: NextPage = () => {
 
 
     // </WalletLoader>
-    <WalletLoader> <CurrentBet></ CurrentBet></WalletLoader>
+    <CurrentBet></CurrentBet>
   )
 }
 
