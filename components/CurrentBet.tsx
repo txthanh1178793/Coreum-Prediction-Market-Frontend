@@ -6,7 +6,7 @@ import React, { useEffect, useState } from "react";
 
 type Props = {};
 const CurrentBet = (props: Props) => {
-    // const { walletAddress, signingClient, coreumQueryClient } = useSigningClient()
+    const { walletAddress, signingClient, coreumQueryClient } = useSigningClient()
     // console.log(walletAddress)
 
     const [inputValue, setInputValue] = useState("0");
@@ -39,8 +39,6 @@ const CurrentBet = (props: Props) => {
         reward,
         queryBetInfo,
         queryReward,
-        // startBet,
-        // endBet,
         upBet,
         downBet,
         claimReward,
@@ -86,16 +84,16 @@ const CurrentBet = (props: Props) => {
     //     endBet();
     // }
     function handleUpBet() {
-        upBet(inputValue);
+        upBet(inputValue, walletAddress, signingClient);
         setInputValue("0");
     }
     function handleDownBet() {
-        downBet(inputValue);
+        downBet(inputValue, walletAddress, signingClient);
         setInputValue("0");
 
     }
     function handleClaimReward() {
-        claimReward(betID);
+        claimReward(betID, walletAddress, signingClient);
         setReward("0");
     }
     function handleQueryBetInfoNext() {

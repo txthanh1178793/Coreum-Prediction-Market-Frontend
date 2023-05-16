@@ -35,9 +35,9 @@ type StoreState = {
     queryReward: (id: string) => void,
     // startBet: () => void,
     // endBet: () => void,
-    upBet: (value: string) => void,
-    downBet: (value: string) => void,
-    claimReward: (value: string) => void,
+    upBet: (value: string, walletAddress: any, signingClient: any) => void,
+    downBet: (value: string, walletAddress: any, signingClient: any) => void,
+    claimReward: (value: string, walletAddress: any, signingClient: any) => void,
     fetchCurrentInfo: () => void,
     // getid: () => void
 };
@@ -69,9 +69,9 @@ const PredictContext = createContext<StoreState>({
     queryReward: (id) => { },
     // startBet: () => { },
     // endBet: () => { },
-    upBet: (value) => { },
-    downBet: (value) => { },
-    claimReward: (value) => { },
+    upBet: (value, walletAddress, signingClient) => { },
+    downBet: (value, walletAddress, signingClient) => { },
+    claimReward: (value, walletAddress, signingClient) => { },
     fetchCurrentInfo: () => { },
     // getid: () => { }
 });
@@ -208,7 +208,7 @@ const PredictContextProvider = (props: Props) => {
             alert(e)
         }
     }
-    async function upBet(value: string) {
+    async function upBet(value: string, walletAddress: any, signingClient: any) {
         console.log(value);
         if (!walletAddress) {
             alert("No Wallet Connected");
@@ -229,7 +229,7 @@ const PredictContextProvider = (props: Props) => {
         })
     }
 
-    async function downBet(value: string) {
+    async function downBet(value: string, walletAddress: any, signingClient: any) {
         if (!walletAddress) {
             alert("No Wallet Connected");
             return;
@@ -259,7 +259,7 @@ const PredictContextProvider = (props: Props) => {
         }
     }
 
-    async function claimReward(value: string) {
+    async function claimReward(value: string, walletAddress: any, signingClient: any) {
         if (!walletAddress) {
             alert("No Wallet Connected");
             return;
@@ -283,7 +283,7 @@ const PredictContextProvider = (props: Props) => {
         }
     }
 
-    const sendTx = async (msgs: readonly EncodeObject[], amount: any) => {
+    const sendTx = async (msgs: readonly EncodeObject[], amount: any, walletAddress: any, signingClient: any) => {
         try {
             const resp = await signingClient
                 ?.signAndBroadcast(walletAddress, msgs, amount, 'auto')
