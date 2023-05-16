@@ -210,14 +210,14 @@ const PredictContextProvider = (props: Props) => {
     }
     async function upBet(value: string, walletAddress: any, signingClient: any) {
         console.log("xxxxxxxxxxxx");
-        if (!walletAddress) {
-            alert("No Wallet Connected");
-            return;
-        }
-        const amount = {
-            denom: 'udevcore',
-            amount: BigInt((parseFloat(value) * 1000000)).toString()
-        }
+        // if (!walletAddress) {
+        //     alert("No Wallet Connected");
+        //     return;
+        // }
+        // const amount = {
+        //     denom: 'udevcore',
+        //     amount: BigInt((parseFloat(value) * 1000000)).toString()
+        // }
 
         // sendTx([{
         //     typeUrl: 'up_bet',
