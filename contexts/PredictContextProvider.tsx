@@ -193,9 +193,9 @@ const PredictContextProvider = (props: Props) => {
         }
     }
     async function queryReward(id: string) {
-        if (!walletAddress) {
-            return;
-        }
+        // if (!walletAddress) {
+        //     return;
+        // }
         try {
             // const response = await chainGrpcWasmApi.fetchSmartContractState(
             //     PREDICT_CONTRACT_ADDRESS,
