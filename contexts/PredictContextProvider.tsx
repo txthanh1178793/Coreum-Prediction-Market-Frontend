@@ -110,10 +110,11 @@ const PredictContextProvider = (props: Props) => {
 
     // const { walletAddress } = useSigningClient()
 
-    // useEffect(() => {
-    //     const interval = setInterval(() => fetchCurrentInfo(), 5000);
-    //     return () => clearInterval(interval);
-    // }, [walletAddress]);
+    useEffect(() => {
+        const interval = setInterval(() => fetchCurrentInfo(), 5000);
+        return () => clearInterval(interval);
+        // }, [walletAddress]);
+    }, []);
 
 
     const fetchFromBinance = async () => {
@@ -208,7 +209,7 @@ const PredictContextProvider = (props: Props) => {
         }
     }
     async function upBet(value: string, walletAddress: any, signingClient: any) {
-        console.log(value);
+        console.log("xxxxxxxxxxxx");
         if (!walletAddress) {
             alert("No Wallet Connected");
             return;
