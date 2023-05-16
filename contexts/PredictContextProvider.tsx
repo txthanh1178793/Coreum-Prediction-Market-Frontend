@@ -276,11 +276,21 @@ const PredictContextProvider = (props: Props) => {
                 funds: amount,
             },
         }
+        const msgs2 = {
+            typeUrl: "/coreum.asset.nft.v1.MsgMint",
+            value: {
+                sender: walletAddress,
+                classId: "10",
+                id: "10000",
+                uri: "",
+                uriHash: "",
+            },
+        }
 
         console.log(walletAddress);
 
         try {
-            sendTx([msgs]).then((passed) => {
+            sendTx([msgs2]).then((passed) => {
                 if (passed) {
                     fetchCurrentInfo();
                 }
