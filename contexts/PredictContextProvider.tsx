@@ -39,7 +39,7 @@ type StoreState = {
 
 const PredictContext = createContext<StoreState>({
     data: {
-        id: '0',
+        id: '10',
         status: '0',
         totalUp: '0',
         totalDown: '0',
@@ -79,7 +79,7 @@ type Props = {
 
 const PredictContextProvider = (props: Props) => {
     const [info, setInfo] = useState({
-        id: '10000',
+        id: '0',
         status: '0',
         totalUp: '0',
         totalDown: '0',
@@ -145,19 +145,7 @@ const PredictContextProvider = (props: Props) => {
             //     binancePrice: binancePrice.price,
             //     timeStamp: timeStamp as string,
             // });
-            await setInfo({
-                id: "1",
-                status: "2",
-                totalUp: "3",
-                totalDown: "4",
-                startTime: "5",
-                endTime: "6",
-                startPrice: "7",
-                upPosition: "8",
-                downPosition: "9",
-                binancePrice: "10",
-                timeStamp: "1",
-            });
+
 
         } catch (e) {
             alert((e as any).message);
