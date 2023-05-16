@@ -123,7 +123,6 @@ const PredictContextProvider = (props: Props) => {
         let timeStamp = await queryTimeStamp();
         let addr = "inj1jx9uecvwlf94skkwrfumhv0sjsm85um9mmg9ny";
         if (walletAddress) addr = walletAddress;
-        console.log(addr);
         try {
             // const response = await chainGrpcWasmApi.fetchSmartContractState(
             //     PREDICT_CONTRACT_ADDRESS,
