@@ -84,6 +84,7 @@ const CurrentBet = (props: Props) => {
     //     endBet();
     // }
     function handleUpBet() {
+        console.log(walletAddress);
         upBet(inputValue, walletAddress, signingClient);
         setInputValue("0");
     }
