@@ -79,7 +79,7 @@ type Props = {
 
 const PredictContextProvider = (props: Props) => {
     const [info, setInfo] = useState({
-        id: '0',
+        id: '10000',
         status: '0',
         totalUp: '0',
         totalDown: '0',
