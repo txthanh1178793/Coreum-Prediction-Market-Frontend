@@ -145,6 +145,19 @@ const PredictContextProvider = (props: Props) => {
             //     binancePrice: binancePrice.price,
             //     timeStamp: timeStamp as string,
             // });
+            await setInfo({
+                id: "1",
+                status: "2",
+                totalUp: "3",
+                totalDown: "4",
+                startTime: "5",
+                endTime: "6",
+                startPrice: "7",
+                upPosition: "8",
+                downPosition: "9",
+                binancePrice: "10",
+                timeStamp: "1",
+            });
 
         } catch (e) {
             alert((e as any).message);
