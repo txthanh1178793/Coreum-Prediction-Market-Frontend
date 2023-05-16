@@ -6,7 +6,7 @@ import React, { useEffect, useState } from "react";
 
 type Props = {};
 const CurrentBet = (props: Props) => {
-    const { walletAddress, signingClient, coreumQueryClient } = useSigningClient()
+    // const { walletAddress, signingClient, coreumQueryClient } = useSigningClient()
     // console.log(walletAddress)
 
     const [inputValue, setInputValue] = useState("0");
@@ -61,6 +61,11 @@ const CurrentBet = (props: Props) => {
             setBetID("0");
         }
     }
+
+    useEffect(() => {
+        const interval = setInterval(() => fetchCurrentInfo(), 5000);
+        return () => clearInterval(interval);
+    }, [walletAddress]);
 
     useEffect(() => {
         getid();

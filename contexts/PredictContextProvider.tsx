@@ -103,8 +103,7 @@ const PredictContextProvider = (props: Props) => {
     const { walletAddress, signingClient, coreumQueryClient } = useSigningClient()
 
     useEffect(() => {
-        const interval = setInterval(() => fetchCurrentInfo(), 5000);
-        return () => clearInterval(interval);
+        fetchCurrentInfo();
     }, [walletAddress]);
 
     const fetchFromBinance = async () => {
@@ -263,6 +262,8 @@ const PredictContextProvider = (props: Props) => {
             denom: 'inj',
             amount: BigInt((parseFloat(value) * 1000000)).toString()
         }
+
+        console.log(walletAddress);
 
         try {
             // const msg = MsgExecuteContractCompat.fromJSON({
