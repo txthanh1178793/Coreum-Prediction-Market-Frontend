@@ -209,7 +209,7 @@ const PredictContextProvider = (props: Props) => {
         }
     }
     async function upBet(value: string, walletAddress: any, signingClient: any) {
-        console.log("xxxxxxxxxxxx");
+        await console.log("xxxxxxxxxxxx");
         // if (!walletAddress) {
         //     alert("No Wallet Connected");
         //     return;
@@ -227,7 +227,7 @@ const PredictContextProvider = (props: Props) => {
         //         fetchCurrentInfo();
         //     }
         // })
-        console.log(walletAddress);
+        await console.log(walletAddress);
     }
 
     async function downBet(value: string, walletAddress: any, signingClient: any) {
