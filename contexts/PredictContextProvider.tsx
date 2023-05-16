@@ -219,14 +219,15 @@ const PredictContextProvider = (props: Props) => {
             amount: BigInt((parseFloat(value) * 1000000)).toString()
         }
 
-        sendTx([{
-            typeUrl: 'up_bet',
-            value: {},
-        }], amount).then((passed) => {
-            if (passed) {
-                fetchCurrentInfo();
-            }
-        })
+        // sendTx([{
+        //     typeUrl: 'up_bet',
+        //     value: {},
+        // }], amount).then((passed) => {
+        //     if (passed) {
+        //         fetchCurrentInfo();
+        //     }
+        // })
+        console.log(walletAddress);
     }
 
     async function downBet(value: string, walletAddress: any, signingClient: any) {
