@@ -39,11 +39,12 @@ const CurrentBet = (props: Props) => {
         reward,
         queryBetInfo,
         queryReward,
+        startBet,
+        endBet,
         upBet,
         downBet,
         claimReward,
         fetchCurrentInfo,
-        // getid
     } = usePredictStore();
 
     async function getid() {
@@ -85,16 +86,16 @@ const CurrentBet = (props: Props) => {
     // }
     function handleUpBet() {
         // console.log(walletAddress);
-        upBet(inputValue, walletAddress, signingClient);
+        upBet(inputValue);
         setInputValue("0");
     }
     function handleDownBet() {
-        downBet(inputValue, walletAddress, signingClient);
+        downBet(inputValue);
         setInputValue("0");
 
     }
     function handleClaimReward() {
-        claimReward(betID, walletAddress, signingClient);
+        claimReward(betID);
         setReward("0");
     }
     function handleQueryBetInfoNext() {
@@ -160,7 +161,7 @@ const CurrentBet = (props: Props) => {
                     </div>
                     <input type="number" className="input" value={inputValue} onChange={(e) => handleChange(e)} />
                     <div className="--button-container ---a">
-                        <button onClick={handleUpBet} className="button ---a">UP</button>
+                        <button onClick={handleUpBet} disabled={info.status == "1"} className="button ---a">UP</button>
                         {/* <p className="--button-text">UP</p> */}
                         <object className="--center-vertical" data="up.svg" width="50" height="50"> </object>
 
