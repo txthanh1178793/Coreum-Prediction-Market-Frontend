@@ -105,15 +105,15 @@ const PredictContextProvider = (props: Props) => {
     });
     // const [addr, setAddr] = useState("inj1jx9uecvwlf94skkwrfumhv0sjsm85um9mmg9ny");
     const [reward, setReward] = useState("0");
-    const { walletAddress, signingClient, coreumQueryClient } = useSigningClient()
+    // const { walletAddress, signingClient, coreumQueryClient } = useSigningClient()
 
 
     // const { walletAddress } = useSigningClient()
 
-    useEffect(() => {
-        const interval = setInterval(() => fetchCurrentInfo(), 5000);
-        return () => clearInterval(interval);
-    }, [walletAddress]);
+    // useEffect(() => {
+    //     const interval = setInterval(() => fetchCurrentInfo(), 5000);
+    //     return () => clearInterval(interval);
+    // }, [walletAddress]);
 
 
     const fetchFromBinance = async () => {
