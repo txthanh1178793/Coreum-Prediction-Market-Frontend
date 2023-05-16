@@ -1,6 +1,6 @@
 import { usePredictStore } from "contexts/PredictContextProvider";
 import { useSigningClient } from 'contexts/client'
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
 // import { PREDICT_CONTRACT_ADDRESS } from "@/services/constants";
 
 
