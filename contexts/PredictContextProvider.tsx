@@ -1,5 +1,6 @@
 import React, { createContext, useContext, useEffect, useState } from "react";
 import { useSigningClient } from 'contexts/client'
+import { EncodeObject } from "@cosmjs/proto-signing";
 
 
 type StoreState = {
@@ -279,21 +280,11 @@ const PredictContextProvider = (props: Props) => {
         console.log(walletAddress);
 
         try {
-            signingClient?.signAndBroadcast(walletAddress, [msgs], 'auto')
-            // const msg = MsgExecuteContractCompat.fromJSON({
-            //     funds: amount,
-            //     contractAddress: PREDICT_CONTRACT_ADDRESS,
-            //     sender: walletAddress,
-            //     msg: {
-            //         up_bet: {},
-            //     },
-            // });
-
-            // await msgBroadcastClient.broadcast({
-            //     msgs: msg,
-            //     walletAddress: walletAddress,
-            // });
-            fetchCurrentInfo();
+            sendTx([msgs]).then((passed) => {
+                if (passed) {
+                    fetchCurrentInfo();
+                }
+            })
         } catch (e) {
             alert((e as any).message);
         }
@@ -349,6 +340,17 @@ const PredictContextProvider = (props: Props) => {
             fetchCurrentInfo();
         } catch (e) {
             alert((e as any).message);
+        }
+    }
+    const sendTx = async (msgs: readonly EncodeObject[]) => {
+        try {
+            const resp = await signingClient
+                ?.signAndBroadcast(walletAddress, msgs, 'auto')
+            console.log(`Tx hash: ${resp?.transactionHash}`)
+            return true
+        } catch (error: any) {
+            console.error(error)
+            return false
         }
     }
 
