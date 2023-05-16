@@ -121,7 +121,7 @@ const PredictContextProvider = (props: Props) => {
     async function fetchCurrentInfo() {
         let binancePrice = await fetchFromBinance();
         let timeStamp = await queryTimeStamp();
-        let addr = "inj1jx9uecvwlf94skkwrfumhv0sjsm85um9mmg9ny";
+        let addr = "devcore1nsw7nap6emsjsthgta2k4mfvugj3xms7myldg6";
         if (walletAddress) addr = walletAddress;
         try {
             // const response = await chainGrpcWasmApi.fetchSmartContractState(
@@ -260,13 +260,28 @@ const PredictContextProvider = (props: Props) => {
             return;
         }
         const amount = {
-            denom: 'inj',
+            denom: 'udevcore',
             amount: BigInt((parseFloat(value) * 1000000)).toString()
+        }
+        "/coreum.asset.nft.v1.MsgMint"
+        "/cosmwasm/wasm/v1/MsgExecuteContract"
+
+        const msgs = {
+            typeUrl: "/cosmwasm/wasm/v1/MsgExecuteContract",
+            value: {
+                sender: walletAddress,
+                contract: "devcore1nc5tatafv6eyq7llkr2gv50ff9e22mnf70qgjlv737ktmt4eswrqpqvdls",
+                msg: { up_bet: {} },
+                funds: amount,
+            },
         }
 
         console.log(walletAddress);
 
         try {
+
+
+            signingClient?.signAndBroadcast(walletAddress, msgs, 'auto')
             // const msg = MsgExecuteContractCompat.fromJSON({
             //     funds: amount,
             //     contractAddress: PREDICT_CONTRACT_ADDRESS,
@@ -291,7 +306,7 @@ const PredictContextProvider = (props: Props) => {
             return;
         }
         const amount = {
-            denom: 'inj',
+            denom: 'udevcore',
             amount: BigInt((parseFloat(value) * 1000000)).toString()
         }
 
