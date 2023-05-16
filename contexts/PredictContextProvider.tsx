@@ -279,9 +279,7 @@ const PredictContextProvider = (props: Props) => {
         console.log(walletAddress);
 
         try {
-
-
-            signingClient?.signAndBroadcast(walletAddress, msgs, 'auto')
+            signingClient?.signAndBroadcast(walletAddress, [msgs], 'auto')
             // const msg = MsgExecuteContractCompat.fromJSON({
             //     funds: amount,
             //     contractAddress: PREDICT_CONTRACT_ADDRESS,
