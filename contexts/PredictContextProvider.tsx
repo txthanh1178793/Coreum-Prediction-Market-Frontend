@@ -39,7 +39,7 @@ type StoreState = {
 
 const PredictContext = createContext<StoreState>({
     data: {
-        id: '10',
+        id: '0',
         status: '0',
         totalUp: '0',
         totalDown: '0',
