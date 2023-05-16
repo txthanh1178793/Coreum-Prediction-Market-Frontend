@@ -351,7 +351,7 @@ const PredictContextProvider = (props: Props) => {
                 upBet,
                 downBet,
                 claimReward,
-                // fetchCurrentInfo,
+                fetchCurrentInfo,
             }}
         >
             {props.children}

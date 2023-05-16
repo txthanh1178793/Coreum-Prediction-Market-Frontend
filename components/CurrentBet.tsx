@@ -68,6 +68,7 @@ const CurrentBet = (props: Props) => {
     }, []);
 
     useEffect(() => {
+        fetchCurrentInfo();
         getid();
     }, []);
 
