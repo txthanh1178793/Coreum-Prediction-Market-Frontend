@@ -62,10 +62,7 @@ const CurrentBet = (props: Props) => {
         }
     }
 
-    useEffect(() => {
-        const interval = setInterval(() => fetchCurrentInfo(), 5000);
-        return () => clearInterval(interval);
-    }, []);
+
 
     useEffect(() => {
         fetchCurrentInfo();
