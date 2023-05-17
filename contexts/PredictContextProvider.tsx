@@ -130,10 +130,10 @@ const PredictContextProvider = (props: Props) => {
         try {
             const response = queryClient.queryContractSmart(
                 contractAddress,
-                { current_info: { addr: addr } });
+                { current_info: { addr: addr } }) as { data: string };
 
-            console.log(response);
-            console.log(addr);
+            console.log(response.data);
+            // console.log(addr);
             // const data = await fromBase64(response.data);
             // await setInfo({
             //     id: data.id as string,
