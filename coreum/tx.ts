@@ -4,13 +4,15 @@ import {
   MsgIssueClass as AssetNFTMsgIssueClass,
   MsgMint as AssetNFTMsgMint,
 } from "./proto-ts/coreum/asset/nft/v1/tx";
-import {MsgSend as NFTMsgSend} from "./proto-ts/coreum/nft/v1beta1/tx";
-import {GeneratedType} from "@cosmjs/proto-signing";
+import { MsgSend as NFTMsgSend } from "./proto-ts/coreum/nft/v1beta1/tx";
+import { GeneratedType } from "@cosmjs/proto-signing";
+import { MsgExecuteContract } from "cosmjs-types/cosmwasm/wasm/v1/tx";
 
 export const coreumRegistryTypes: ReadonlyArray<[string, GeneratedType]> = [
   ["/coreum.asset.nft.v1.MsgIssueClass", AssetNFTMsgIssueClass],
   ["/coreum.asset.nft.v1.MsgMint", AssetNFTMsgMint],
   ["/coreum.nft.v1beta1.MsgSend", NFTMsgSend],
+  ["/cosmwasm.wasm.v1.MsgExecuteContract", MsgExecuteContract]
 ];
 
 export namespace AssetNFT {

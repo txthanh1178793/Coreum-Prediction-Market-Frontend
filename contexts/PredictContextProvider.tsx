@@ -264,8 +264,6 @@ const PredictContextProvider = (props: Props) => {
             denom: 'udevcore',
             amount: BigInt((parseFloat(value) * 1000000)).toString()
         }
-        // "/coreum.asset.nft.v1.MsgMint"
-        // "/cosmwasm/wasm/v1/MsgExecuteContract"
 
         const msgs = {
             typeUrl: "/cosmwasm.wasm.v1.MsgExecuteContract",
@@ -277,7 +275,6 @@ const PredictContextProvider = (props: Props) => {
             },
         }
 
-        console.log(walletAddress);
 
         try {
             sendTx([msgs]).then((passed) => {
