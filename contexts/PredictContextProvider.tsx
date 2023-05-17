@@ -343,7 +343,7 @@ const PredictContextProvider = (props: Props) => {
     const sendTx = async (msgs: readonly EncodeObject[]) => {
         try {
             const resp = await signingClient
-                ?.signAndBroadcast(walletAddress, msgs, 'auto', "exe")
+                ?.signAndBroadcast(walletAddress, msgs, 'auto')
             console.log(`Tx hash: ${resp?.transactionHash}`)
             return true
         } catch (error: any) {
