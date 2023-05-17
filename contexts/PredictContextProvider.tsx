@@ -2,7 +2,7 @@ import React, { createContext, useContext, useEffect, useState } from "react";
 import { useSigningClient } from 'contexts/client'
 import { EncodeObject } from "@cosmjs/proto-signing";
 import { QueryClient } from "coreum/query";
-
+import { CosmWasmClient } from "@cosmjs/cosmwasm-stargate"
 const encoder = new TextEncoder();
 const contractAddress = "devcore1nc5tatafv6eyq7llkr2gv50ff9e22mnf70qgjlv737ktmt4eswrqpqvdls";
 type StoreState = {
@@ -122,6 +122,7 @@ const PredictContextProvider = (props: Props) => {
     };
 
     async function fetchCurrentInfo() {
+        const queryClient = await CosmWasmClient.connect("https://full-node.devnet-1.coreum.dev")
         let binancePrice = await fetchFromBinance();
         let timeStamp = await queryTimeStamp();
         let addr = "devcore1nsw7nap6emsjsthgta2k4mfvugj3xms7myldg6";
@@ -129,7 +130,7 @@ const PredictContextProvider = (props: Props) => {
         try {
 
 
-            const response = QueryClient.queryContractSmart(
+            const response = queryClient.queryContractSmart(
                 contractAddress,
                 encoder.encode(JSON.stringify({ current_info: { addr: addr } }))) as { data: string };
 
