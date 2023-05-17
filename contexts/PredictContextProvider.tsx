@@ -128,13 +128,12 @@ const PredictContextProvider = (props: Props) => {
         let addr = "devcore1nsw7nap6emsjsthgta2k4mfvugj3xms7myldg6";
         if (walletAddress) addr = walletAddress;
         try {
-
-
             const response = queryClient.queryContractSmart(
                 contractAddress,
                 { current_info: { addr: addr } });
 
             console.log(response);
+            console.log(addr);
             // const data = await fromBase64(response.data);
             // await setInfo({
             //     id: data.id as string,
@@ -149,8 +148,6 @@ const PredictContextProvider = (props: Props) => {
             //     binancePrice: binancePrice.price,
             //     timeStamp: timeStamp as string,
             // });
-
-
         } catch (e) {
             alert((e as any).message);
         }
