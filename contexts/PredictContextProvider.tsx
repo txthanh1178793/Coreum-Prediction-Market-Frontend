@@ -132,7 +132,7 @@ const PredictContextProvider = (props: Props) => {
 
             const response = queryClient.queryContractSmart(
                 contractAddress,
-                encoder.encode(JSON.stringify({ current_info: { addr: addr } })));
+                { current_info: { addr: addr } });
 
             console.log(response);
             // const data = await fromBase64(response.data);
