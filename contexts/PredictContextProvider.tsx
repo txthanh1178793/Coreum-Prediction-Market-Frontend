@@ -322,6 +322,32 @@ const PredictContextProvider = (props: Props) => {
             alert((e as any).message);
         }
     }
+    async function claimReward(value: string) {
+        if (!walletAddress) {
+            alert("No Wallet Connected");
+            return;
+        }
+
+        const msgs = {
+            typeUrl: "/cosmwasm.wasm.v1.MsgExecuteContract",
+            value: {
+                sender: walletAddress,
+                contract: contractAddress,
+                msg: encoder.encode(JSON.stringify({ claim_reward: { bet_id: parseInt(value, 10) } })),
+            },
+        }
+        try {
+            sendTx([msgs]).then((passed) => {
+                if (passed) {
+                    fetchCurrentInfo();
+                }
+            })
+        } catch (e) {
+            alert((e as any).message);
+        }
+    }
+
+
     const sendTx = async (msgs: readonly EncodeObject[]) => {
         try {
             const resp = await signingClient
