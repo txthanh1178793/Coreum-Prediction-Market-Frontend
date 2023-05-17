@@ -122,7 +122,7 @@ const PredictContextProvider = (props: Props) => {
     };
 
     async function fetchCurrentInfo() {
-        const queryClient = await CosmWasmClient.connect("https://full-node.devnet-1.coreum.dev")
+        const queryClient = await CosmWasmClient.connect("https://full-node.devnet-1.coreum.dev:26657")
         let binancePrice = await fetchFromBinance();
         let timeStamp = await queryTimeStamp();
         let addr = "devcore1nsw7nap6emsjsthgta2k4mfvugj3xms7myldg6";
