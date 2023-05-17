@@ -270,7 +270,7 @@ const PredictContextProvider = (props: Props) => {
             value: {
                 sender: walletAddress,
                 contract: "devcore1nc5tatafv6eyq7llkr2gv50ff9e22mnf70qgjlv737ktmt4eswrqpqvdls",
-                msg: { up_bet: {} },
+                msg: toUtf8(JSON.stringify({ up_bet: {} })),
                 funds: [amount],
             },
         }
