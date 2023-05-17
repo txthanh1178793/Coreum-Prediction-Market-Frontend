@@ -128,7 +128,7 @@ const PredictContextProvider = (props: Props) => {
         let addr = "devcore1nsw7nap6emsjsthgta2k4mfvugj3xms7myldg6";
         if (walletAddress) addr = walletAddress;
         try {
-            const response = queryClient.queryContractSmart(
+            const response = await queryClient.queryContractSmart(
                 contractAddress,
                 { current_info: { addr: addr } }) as { data: string };
 
