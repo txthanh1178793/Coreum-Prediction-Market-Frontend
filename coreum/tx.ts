@@ -7,12 +7,15 @@ import {
 import { MsgSend as NFTMsgSend } from "./proto-ts/coreum/nft/v1beta1/tx";
 import { GeneratedType } from "@cosmjs/proto-signing";
 import { MsgExecuteContract } from "cosmjs-types/cosmwasm/wasm/v1/tx";
+import { QuerySmartContractStateRequest } from "cosmjs-types/cosmwasm/wasm/v1/query";
+
 
 export const coreumRegistryTypes: ReadonlyArray<[string, GeneratedType]> = [
   ["/coreum.asset.nft.v1.MsgIssueClass", AssetNFTMsgIssueClass],
   ["/coreum.asset.nft.v1.MsgMint", AssetNFTMsgMint],
   ["/coreum.nft.v1beta1.MsgSend", NFTMsgSend],
-  ["/cosmwasm.wasm.v1.MsgExecuteContract", MsgExecuteContract]
+  ["/cosmwasm.wasm.v1.MsgExecuteContract", MsgExecuteContract],
+  ["/cosmwasm.wasm.v1.QuerySmartContractStateRequest", QuerySmartContractStateRequest]
 ];
 
 export namespace AssetNFT {

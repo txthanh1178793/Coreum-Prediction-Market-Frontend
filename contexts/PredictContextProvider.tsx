@@ -1,9 +1,10 @@
 import React, { createContext, useContext, useEffect, useState } from "react";
 import { useSigningClient } from 'contexts/client'
 import { EncodeObject } from "@cosmjs/proto-signing";
+import { QueryClient } from "coreum/query";
 
 const encoder = new TextEncoder();
-
+const contractAddress = "devcore1nc5tatafv6eyq7llkr2gv50ff9e22mnf70qgjlv737ktmt4eswrqpqvdls";
 type StoreState = {
     data: {
         id: string;
@@ -126,11 +127,13 @@ const PredictContextProvider = (props: Props) => {
         let addr = "devcore1nsw7nap6emsjsthgta2k4mfvugj3xms7myldg6";
         if (walletAddress) addr = walletAddress;
         try {
-            // const response = await chainGrpcWasmApi.fetchSmartContractState(
-            //     PREDICT_CONTRACT_ADDRESS,
-            //     toBase64({ current_info: { addr: addr } })
-            // ) as { data: string };
 
+
+            const response = QueryClient.queryContractSmart(
+                contractAddress,
+                encoder.encode(JSON.stringify({ current_info: { addr: addr } }))) as { data: string };
+
+            console.log(response.data);
             // const data = await fromBase64(response.data);
             // await setInfo({
             //     id: data.id as string,
@@ -270,7 +273,7 @@ const PredictContextProvider = (props: Props) => {
             typeUrl: "/cosmwasm.wasm.v1.MsgExecuteContract",
             value: {
                 sender: walletAddress,
-                contract: "devcore1nc5tatafv6eyq7llkr2gv50ff9e22mnf70qgjlv737ktmt4eswrqpqvdls",
+                contract: contractAddress,
                 msg: encoder.encode(JSON.stringify({ up_bet: {} })),
                 funds: [amount],
             },
@@ -297,45 +300,23 @@ const PredictContextProvider = (props: Props) => {
             amount: BigInt((parseFloat(value) * 1000000)).toString()
         }
 
-        try {
-            // const msg = MsgExecuteContractCompat.fromJSON({
-            //     funds: amount,
-            //     contractAddress: PREDICT_CONTRACT_ADDRESS,
-            //     sender: walletAddress,
-            //     msg: {
-            //         down_bet: {},
-            //     },
-            // });
-
-            // await msgBroadcastClient.broadcast({
-            //     msgs: msg,
-            //     walletAddress: walletAddress,
-            // });
-            fetchCurrentInfo();
-        } catch (e) {
-            alert((e as any).message);
+        const msgs = {
+            typeUrl: "/cosmwasm.wasm.v1.MsgExecuteContract",
+            value: {
+                sender: walletAddress,
+                contract: contractAddress,
+                msg: encoder.encode(JSON.stringify({ down_bet: {} })),
+                funds: [amount],
+            },
         }
-    }
 
-    async function claimReward(value: string) {
-        if (!walletAddress) {
-            alert("No Wallet Connected");
-            return;
-        }
+
         try {
-            // const msg = MsgExecuteContractCompat.fromJSON({
-            //     contractAddress: PREDICT_CONTRACT_ADDRESS,
-            //     sender: walletAddress,
-            //     msg: {
-            //         claim_reward: { bet_id: parseInt(value, 10) },
-            //     },
-            // });
-
-            // await msgBroadcastClient.broadcast({
-            //     msgs: msg,
-            //     walletAddress: walletAddress,
-            // });
-            fetchCurrentInfo();
+            sendTx([msgs]).then((passed) => {
+                if (passed) {
+                    fetchCurrentInfo();
+                }
+            })
         } catch (e) {
             alert((e as any).message);
         }
