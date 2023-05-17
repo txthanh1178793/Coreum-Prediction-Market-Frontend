@@ -2,7 +2,7 @@ import React, { createContext, useContext, useEffect, useState } from "react";
 import { useSigningClient } from 'contexts/client'
 import { EncodeObject } from "@cosmjs/proto-signing";
 
-const encoder = new TextEncoder('UTF-8');
+const encoder = new TextEncoder();
 
 type StoreState = {
     data: {
