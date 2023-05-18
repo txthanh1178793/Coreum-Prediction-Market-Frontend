@@ -136,7 +136,7 @@ const PredictContextProvider = (props: Props) => {
                 { current_info: { addr: addr } });
 
             const data: any = await JSON.parse(fromUtf8(response));
-            console.log(typeof response);
+            console.log(data);
             // const data = await TextDecoder().decode(response.data);
             // await setInfo({
             //     id: data.id as string,
