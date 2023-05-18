@@ -133,28 +133,28 @@ const PredictContextProvider = (props: Props) => {
         try {
 
             const queryClient = await CosmWasmClient.connect("https://full-node.devnet-1.coreum.dev:26657")
-            const response = await queryClient.queryContractSmart(
+            const data = await queryClient.queryContractSmart(
                 contractAddress,
                 { current_info: { addr: addr } });
 
             // const data: any = await JSON.parse(fromUtf8(response.data));
             // const jsonString = Buffer.from(response).toString('utf8');
             // const data: any = await fromUtf8(response);
-            console.log(response);
+            console.log(data);
             // const data = await TextDecoder().decode(response.data);
-            // await setInfo({
-            //     id: data.id as string,
-            //     status: data.status as string,
-            //     totalUp: data.totalUp as string,
-            //     totalDown: data.totalDown as string,
-            //     startTime: data.startTime as string,
-            //     endTime: data.endTime as string,
-            //     startPrice: data.startPrice as string,
-            //     upPosition: data.upPosition as string,
-            //     downPosition: data.downPosition as string,
-            //     binancePrice: binancePrice.price,
-            //     timeStamp: timeStamp as string,
-            // });
+            await setInfo({
+                id: data.id as string,
+                status: data.status as string,
+                totalUp: data.totalUp as string,
+                totalDown: data.totalDown as string,
+                startTime: data.startTime as string,
+                endTime: data.endTime as string,
+                startPrice: data.startPrice as string,
+                upPosition: data.upPosition as string,
+                downPosition: data.downPosition as string,
+                binancePrice: binancePrice.price,
+                timeStamp: timeStamp as string,
+            });
         } catch (e) {
             alert((e as any).message);
         }
