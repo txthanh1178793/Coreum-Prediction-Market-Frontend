@@ -3,6 +3,9 @@ import { useSigningClient } from 'contexts/client'
 import { EncodeObject } from "@cosmjs/proto-signing";
 import { QueryClient } from "coreum/query";
 import { CosmWasmClient } from "@cosmjs/cosmwasm-stargate"
+import { fromUtf8 } from "@cosmjs/encoding";
+
+
 const encoder = new TextEncoder();
 const contractAddress = "devcore1nc5tatafv6eyq7llkr2gv50ff9e22mnf70qgjlv737ktmt4eswrqpqvdls";
 type StoreState = {
@@ -130,8 +133,9 @@ const PredictContextProvider = (props: Props) => {
         try {
             const response = await queryClient.queryContractSmart(
                 contractAddress,
-                { current_info: { addr: addr } }) as { data: string };
+                { current_info: { addr: addr } });
 
+            const data: any = await JSON.parse(fromUtf8(response));
             console.log(typeof response);
             // const data = await TextDecoder().decode(response.data);
             // await setInfo({
