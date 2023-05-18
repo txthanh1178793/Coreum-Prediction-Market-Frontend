@@ -141,7 +141,7 @@ const CurrentBet = (props: Props) => {
                     </p>
                     <div className="line"></div>
                     <div className="price-tag">
-                        <p>INJ Price</p>
+                        <p>BTC Price</p>
                         <p className={parseFloat(info.binancePrice) >= parseFloat(info.startPrice) / 1000 ? "price-up" : "price-down"} >${info.binancePrice}</p>
                         <table className="info">
                             <tr>
@@ -150,15 +150,15 @@ const CurrentBet = (props: Props) => {
                             </tr>
                             <tr>
                                 <td className="prize">Total Prize</td>
-                                <td>{(parseFloat(((BigInt(info.totalUp) + BigInt(info.totalDown)) / BigInt("1000000")).toString())).toString()} $INJ</td>
+                                <td>{(parseFloat(((BigInt(info.totalUp) + BigInt(info.totalDown)) / BigInt("1000000")).toString())).toString()} $CORE</td>
                             </tr>
                             <tr>
                                 <td className="prize">Up Postion</td>
-                                <td>{(parseFloat((BigInt(info.upPosition) / BigInt('1000000')).toString())).toString()} $INJ</td>
+                                <td>{(parseFloat((BigInt(info.upPosition) / BigInt('1000000')).toString())).toString()} $CORE</td>
                             </tr>
                             <tr>
                                 <td className="prize">Down Postion</td>
-                                <td>{(parseFloat((BigInt(info.downPosition) / BigInt('1000000')).toString())).toString()} $INJ</td>
+                                <td>{(parseFloat((BigInt(info.downPosition) / BigInt('1000000')).toString())).toString()} $CORE</td>
                             </tr>
                         </table>
                     </div>
@@ -206,13 +206,13 @@ const CurrentBet = (props: Props) => {
                         <tr>
                             <td className="--bet-info-data">Total Prize</td>
                             <td className="--bet-info-data">
-                                {parseInt((BigInt(betInfoState.totalPrize as string) / BigInt("1000000")).toString()) / 100000} $INJ
+                                {parseInt((BigInt(betInfoState.totalPrize as string) / BigInt("1000000")).toString()) / 100000} $CORE
                             </td>
                         </tr>
                         <tr>
                             <td className="--bet-info-data">Your Reward</td>
                             <td className="--bet-info-data">
-                                {parseInt((BigInt(rewardState as string) / BigInt("1000000")).toString()) / 100000} $INJ
+                                {parseInt((BigInt(rewardState as string) / BigInt("1000000")).toString()) / 100000} $CORE
                             </td>
                         </tr>
                     </table>
