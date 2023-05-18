@@ -139,7 +139,7 @@ const PredictContextProvider = (props: Props) => {
             // const jsonString = Buffer.from(response).toString('utf8');
 
             // const data: any = await JSON.parse(fromUtf8(response.data));
-            const data: any = await fromUtf8(response.data);
+            const data: any = await fromUtf8(response.buffer);
             console.log(data);
             // const data = await TextDecoder().decode(response.data);
             // await setInfo({
