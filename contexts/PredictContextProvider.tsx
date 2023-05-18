@@ -137,11 +137,6 @@ const PredictContextProvider = (props: Props) => {
                 contractAddress,
                 { current_info: { addr: addr } });
 
-            // const data: any = await JSON.parse(fromUtf8(response.data));
-            // const jsonString = Buffer.from(response).toString('utf8');
-            // const data: any = await fromUtf8(response);
-            console.log(data);
-            // const data = await TextDecoder().decode(response.data);
             await setInfo({
                 id: data.id as string,
                 status: data.status as string,
@@ -181,15 +176,18 @@ const PredictContextProvider = (props: Props) => {
             //     PREDICT_CONTRACT_ADDRESS,
             //     toBase64({ bet_info: { bet_id: parseInt(value, 10) } })
             // ) as { data: string };
-
+            const queryClient = await CosmWasmClient.connect("https://full-node.devnet-1.coreum.dev:26657")
+            const data = await queryClient.queryContractSmart(
+                contractAddress,
+                { bet_info: { bet_id: parseInt(value, 10) } });
             // const data = fromBase64(response.data);
-            // setBetInfo({
-            //     upBet: data.upBet as string,
-            //     downBet: data.downBet as string,
-            //     endPrice: data.endPrice as string,
-            //     startPrice: data.startPrice as string,
-            //     totalPrize: data.totalPrize as string,
-            // });
+            setBetInfo({
+                upBet: data.upBet as string,
+                downBet: data.downBet as string,
+                endPrice: data.endPrice as string,
+                startPrice: data.startPrice as string,
+                totalPrize: data.totalPrize as string,
+            });
             // console.log(data);
         } catch (e) {
             alert(e);
