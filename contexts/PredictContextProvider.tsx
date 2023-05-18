@@ -132,7 +132,7 @@ const PredictContextProvider = (props: Props) => {
                 contractAddress,
                 { current_info: { addr: addr } }) as { data: string };
 
-            console.log(typeof response.data);
+            console.log(typeof response);
             // const data = await TextDecoder().decode(response.data);
             // await setInfo({
             //     id: data.id as string,
