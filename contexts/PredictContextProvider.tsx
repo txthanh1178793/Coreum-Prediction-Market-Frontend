@@ -158,7 +158,8 @@ const PredictContextProvider = (props: Props) => {
     async function queryTimeStamp() {
         try {
             const queryClient = await CosmWasmClient.connect("https://full-node.devnet-1.coreum.dev:26657")
-            const timeStamp = queryClient.getBlock().header.time;
+            const block = await queryClient.getBlock();
+            const timeStamp = block.header.time;
             // const response = await chainGrpcWasmApi.fetchSmartContractState(
             //     PREDICT_CONTRACT_ADDRESS,
             //     toBase64({ time_stamp_info: {} })
