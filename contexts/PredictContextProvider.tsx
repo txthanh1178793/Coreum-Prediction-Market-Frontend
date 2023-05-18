@@ -133,9 +133,9 @@ const PredictContextProvider = (props: Props) => {
         try {
             const response = await queryClient.queryContractSmart(
                 contractAddress,
-                { current_info: { addr: addr } });
+                { current_info: { addr: addr } }) as { data: string };
 
-            const data: any = await JSON.parse(fromUtf8(response));
+            const data: any = await JSON.parse(fromUtf8(response.data));
             console.log(data);
             // const data = await TextDecoder().decode(response.data);
             // await setInfo({
