@@ -125,22 +125,22 @@ const PredictContextProvider = (props: Props) => {
     };
 
     async function fetchCurrentInfo() {
-        const queryClient = await CosmWasmClient.connect("https://full-node.devnet-1.coreum.dev:26657")
+
         let binancePrice = await fetchFromBinance();
         let timeStamp = await queryTimeStamp();
         let addr = "devcore1nsw7nap6emsjsthgta2k4mfvugj3xms7myldg6";
         if (walletAddress) addr = walletAddress;
         try {
+
+            const queryClient = await CosmWasmClient.connect("https://full-node.devnet-1.coreum.dev:26657")
             const response = await queryClient.queryContractSmart(
                 contractAddress,
                 { current_info: { addr: addr } });
 
-
-            // const jsonString = Buffer.from(response).toString('utf8');
-
             // const data: any = await JSON.parse(fromUtf8(response.data));
-            const data: any = await fromUtf8(response);
-            console.log(data);
+            // const jsonString = Buffer.from(response).toString('utf8');
+            // const data: any = await fromUtf8(response);
+            console.log(response);
             // const data = await TextDecoder().decode(response.data);
             // await setInfo({
             //     id: data.id as string,
