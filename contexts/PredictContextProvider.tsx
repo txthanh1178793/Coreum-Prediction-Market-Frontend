@@ -115,7 +115,7 @@ const PredictContextProvider = (props: Props) => {
 
     const fetchFromBinance = async () => {
         try {
-            const response = await fetch('https://data.binance.com/api/v3/ticker/price?symbol=INJUSDT');
+            const response = await fetch('https://data.binance.com/api/v3/ticker/price?symbol=BTCUSDT');
             const data = response.json();
             return data;
         }
