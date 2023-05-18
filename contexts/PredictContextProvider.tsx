@@ -157,6 +157,8 @@ const PredictContextProvider = (props: Props) => {
 
     async function queryTimeStamp() {
         try {
+            const queryClient = await CosmWasmClient.connect("https://full-node.devnet-1.coreum.dev:26657")
+            const timeStamp = queryClient.getBlock().header.time;
             // const response = await chainGrpcWasmApi.fetchSmartContractState(
             //     PREDICT_CONTRACT_ADDRESS,
             //     toBase64({ time_stamp_info: {} })
@@ -164,7 +166,8 @@ const PredictContextProvider = (props: Props) => {
 
             // const info = fromBase64(response.data);
             // return info;
-            return '0';
+            console.log(timeStamp);
+            return timeStamp;
         } catch (e) {
             return '0';
         }
@@ -172,15 +175,11 @@ const PredictContextProvider = (props: Props) => {
 
     async function queryBetInfo(value: string) {
         try {
-            // const response = await chainGrpcWasmApi.fetchSmartContractState(
-            //     PREDICT_CONTRACT_ADDRESS,
-            //     toBase64({ bet_info: { bet_id: parseInt(value, 10) } })
-            // ) as { data: string };
             const queryClient = await CosmWasmClient.connect("https://full-node.devnet-1.coreum.dev:26657")
             const data = await queryClient.queryContractSmart(
                 contractAddress,
                 { bet_info: { bet_id: parseInt(value, 10) } });
-            // const data = fromBase64(response.data);
+
             setBetInfo({
                 upBet: data.upBet as string,
                 downBet: data.downBet as string,
