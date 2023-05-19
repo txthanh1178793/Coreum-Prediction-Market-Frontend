@@ -47,7 +47,7 @@ const CurrentBet = (props: Props) => {
         fetchCurrentInfo,
     } = usePredictStore();
 
-    setBetID(data.id());
+    setBetID(data.id);
 
     async function getid() {
         const addr = "devcore17p9rzwnnfxcjp32un9ug7yhhzgtkhvl9jfksztgw5uh69wac2pgsemjgk5";
