@@ -142,7 +142,7 @@ const CurrentBet = (props: Props) => {
                     <div className="line"></div>
                     <div className="price-tag">
                         <p>BTC Price</p>
-                        <p className={parseFloat(info.binancePrice) >= parseFloat(info.startPrice) ? "price-up" : "price-down"} >${info.binancePrice}</p>
+                        <p className={parseFloat(info.binancePrice) >= parseFloat(info.startPrice) ? "price-up" : "price-down"} >${parseFloat(info.binancePrice).toFixed(2)}</p>
                         <table className="info">
                             <tr>
                                 <th className="price-start">Start Price</th>
