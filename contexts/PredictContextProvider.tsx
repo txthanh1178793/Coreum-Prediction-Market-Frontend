@@ -194,12 +194,16 @@ const PredictContextProvider = (props: Props) => {
             return;
         }
         try {
+            const queryClient = await CosmWasmClient.connect("https://full-node.devnet-1.coreum.dev:26657")
+            const data = await queryClient.queryContractSmart(
+                contractAddress,
+                { user_reward: { addr: walletAddress, bet_id: parseInt(id, 10) } });
             // const response = await chainGrpcWasmApi.fetchSmartContractState(
             //     PREDICT_CONTRACT_ADDRESS,
             //     toBase64({ user_reward: { addr: walletAddress, bet_id: parseInt(id, 10) } })
             // ) as { data: string };
             // const desh_data = fromBase64(response.data).toString();
-            // setReward(desh_data);
+            setReward(data.toString());
         } catch (e) {
             alert(e)
         }
