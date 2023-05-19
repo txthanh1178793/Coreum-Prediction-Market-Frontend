@@ -206,13 +206,13 @@ const CurrentBet = (props: Props) => {
                         <tr>
                             <td className="--bet-info-data">Total Prize</td>
                             <td className="--bet-info-data">
-                                {parseFloat(parseInt(betInfoState.totalPrize) / 1000000).toFixed(2)} $CORE
+                                {(parseInt(betInfoState.totalPrize) / 1000000).toFixed(2)} $CORE
                             </td>
                         </tr>
                         <tr>
                             <td className="--bet-info-data">Your Reward</td>
                             <td className="--bet-info-data">
-                                {parseFloat(parseInt(reward) / 1000000).toFixed(2)} $CORE
+                                {(parseInt(reward) / 1000000).toFixed(2)} $CORE
                             </td>
                         </tr>
                     </table>
