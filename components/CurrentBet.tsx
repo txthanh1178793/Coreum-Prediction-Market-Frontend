@@ -1,7 +1,7 @@
 import { usePredictStore } from "contexts/PredictContextProvider";
 import { useSigningClient } from 'contexts/client'
 import React, { useEffect, useState, useContext } from "react";
-// import { PREDICT_CONTRACT_ADDRESS } from "@/services/constants";
+import { CosmWasmClient } from "@cosmjs/cosmwasm-stargate";
 
 
 type Props = {};
@@ -47,9 +47,15 @@ const CurrentBet = (props: Props) => {
         fetchCurrentInfo,
     } = usePredictStore();
 
+    setBetID(data.id());
+
     async function getid() {
-        const addr = "inj1jx9uecvwlf94skkwrfumhv0sjsm85um9mmg9ny";
+        const addr = "devcore17p9rzwnnfxcjp32un9ug7yhhzgtkhvl9jfksztgw5uh69wac2pgsemjgk5";
         try {
+            const queryClient = await CosmWasmClient.connect("https://full-node.devnet-1.coreum.dev:26657")
+            const data = await queryClient.queryContractSmart(
+                addr,
+                { current_info: { addr: addr } });
             // const response = await chainGrpcWasmApi.fetchSmartContractState(
             //     PREDICT_CONTRACT_ADDRESS,
             //     toBase64({ current_info: { addr: addr } })
@@ -62,11 +68,8 @@ const CurrentBet = (props: Props) => {
         }
     }
 
-
-
     useEffect(() => {
         fetchCurrentInfo();
-        getid();
     }, []);
 
     useEffect(() => {
@@ -88,7 +91,6 @@ const CurrentBet = (props: Props) => {
     //     endBet();
     // }
     function handleUpBet() {
-        // console.log(walletAddress);
         upBet(inputValue);
         setInputValue("0");
     }
@@ -137,7 +139,7 @@ const CurrentBet = (props: Props) => {
             <div className=" --container-wrapper p-6 mt-6 border" >
                 <div className="--container-inner">
                     <p className="order">
-                        #{info.id} {parseInt(info.endTime) == 0 ? "Pending" : (parseInt(info.endTime) < parseInt(info.timeStamp) ? "Watting for Result" : ("Betting End in " + (parseInt(info.endTime) - parseInt(info.timeStamp)).toString() + ' s'))}
+                        #{info.id} {parseInt(info.endTime) == 0 ? "Pending" : (parseInt(info.endTime) < parseInt(info.timeStamp) ? "Waiting for Result" : ("Betting End in " + (parseInt(info.endTime) - parseInt(info.timeStamp)).toString() + ' s'))}
                     </p>
                     <div className="line"></div>
                     <div className="price-tag">
