@@ -47,8 +47,6 @@ const CurrentBet = (props: Props) => {
         fetchCurrentInfo,
     } = usePredictStore();
 
-    setBetID(data.id);
-
     async function getid() {
         const addr = "devcore17p9rzwnnfxcjp32un9ug7yhhzgtkhvl9jfksztgw5uh69wac2pgsemjgk5";
         try {
@@ -61,8 +59,7 @@ const CurrentBet = (props: Props) => {
             //     toBase64({ current_info: { addr: addr } })
             // ) as { data: string };
             // const data = await fromBase64(response.data);
-            // setBetID(parseInt((data.id).toString()).toString());
-            setBetID("0");
+            setBetID(data.id);
         } catch (e) {
             setBetID("0");
         }
