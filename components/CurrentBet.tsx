@@ -47,27 +47,22 @@ const CurrentBet = (props: Props) => {
         fetchCurrentInfo,
     } = usePredictStore();
 
-    // async function getid() {
-    //     const addr = "devcore17p9rzwnnfxcjp32un9ug7yhhzgtkhvl9jfksztgw5uh69wac2pgsemjgk5";
-    //     try {
-    //         const queryClient = await CosmWasmClient.connect("https://full-node.devnet-1.coreum.dev:26657")
-    //         const data = await queryClient.queryContractSmart(
-    //             addr,
-    //             { current_info: { addr: addr } });
-    //         // const response = await chainGrpcWasmApi.fetchSmartContractState(
-    //         //     PREDICT_CONTRACT_ADDRESS,
-    //         //     toBase64({ current_info: { addr: addr } })
-    //         // ) as { data: string };
-    //         // const data = await fromBase64(response.data);
-    //         setBetID(data.id);
-    //     } catch (e) {
-    //         setBetID("0");
-    //     }
-    // }
+    async function getid() {
+        const addr = "devcore17p9rzwnnfxcjp32un9ug7yhhzgtkhvl9jfksztgw5uh69wac2pgsemjgk5";
+        try {
+            const queryClient = await CosmWasmClient.connect("https://full-node.devnet-1.coreum.dev:26657")
+            const data = await queryClient.queryContractSmart(
+                addr,
+                { current_info: { addr: addr } });
+            setBetID(data.id);
+        } catch (e) {
+            setBetID("0");
+        }
+    }
 
     useEffect(() => {
         fetchCurrentInfo();
-        // getid();
+        getid();
     }, []);
 
     useEffect(() => {
