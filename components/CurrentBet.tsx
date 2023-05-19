@@ -120,7 +120,7 @@ const CurrentBet = (props: Props) => {
     function handleChange(event: any) {
         let { value, min, max } = event.target;
 
-        if (Number(value) > 1000) {
+        if (Number(value) > 1000000) {
             value = 1000;
         }
         if (Number(value) < 0.001) {
