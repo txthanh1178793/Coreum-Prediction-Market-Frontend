@@ -141,7 +141,7 @@ const CurrentBet = (props: Props) => {
                         <table className="info">
                             <tr>
                                 <th className="price-start">Start Price</th>
-                                <th>${parseInt(info.startPrice)}</th>
+                                <th>${parseInt(info.startPrice) / 100}</th>
                             </tr>
                             <tr>
                                 <td className="prize">Total Prize</td>
@@ -192,11 +192,11 @@ const CurrentBet = (props: Props) => {
                     <table className="info">
                         <tr>
                             <th className="--bet-info-data">Start Price</th>
-                            <th className="--bet-info-data">${parseFloat(betInfoState.startPrice).toFixed(2)}</th>
+                            <th className="--bet-info-data">${parseFloat(betInfoState.startPrice) / 100}</th>
                         </tr>
                         <tr>
                             <td className="--bet-info-data">End Price</td>
-                            <td className="--bet-info-data">${parseFloat(betInfoState.endPrice).toFixed(2)}</td>
+                            <td className="--bet-info-data">${parseFloat(betInfoState.endPrice) / 100}</td>
                         </tr>
                         <tr>
                             <td className="--bet-info-data">Total Prize</td>
